@@ -246,19 +246,19 @@ export default function Home() {
                 quote="The structured approach to mentorship helped me achieve my career goals in half the time I expected."
                 name="Sarah Johnson"
                 role="Software Engineer"
-                image="/placeholder.svg?height=100&width=100"
+                image="/images/image.png"
               />
               <TestimonialCard
                 quote="As a mentor, I've seen my mentees grow exponentially with the platform's goal tracking and feedback tools."
                 name="Michael Chen"
                 role="Marketing Director"
-                image="/placeholder.svg?height=100&width=100"
+                image="/images/chen.jpg"
               />
               <TestimonialCard
                 quote="The community aspect connected me with peers facing similar challenges, creating a support network beyond my mentor."
                 name="Priya Patel"
                 role="Startup Founder"
-                image="/placeholder.svg?height=100&width=100"
+                image="/images/priya-p.jpg"
               />
             </div>
           </div>
