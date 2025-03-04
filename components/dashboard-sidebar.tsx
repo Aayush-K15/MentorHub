@@ -54,8 +54,10 @@ function DashboardSidebarContent() {
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
-          <Users className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold">MentorHub</span>
+          <Link href="/">
+            <Users className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold">MentorHub</span>
+          </Link>
         </div>
       </SidebarHeader>
       <SidebarContent>
