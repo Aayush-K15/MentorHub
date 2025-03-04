@@ -1,12 +1,11 @@
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Search, Star } from "lucide-react"
+import { Star } from "lucide-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function MentorsPage() {
   return (
@@ -17,16 +16,6 @@ export default function MentorsPage() {
           <p className="text-muted-foreground">
             Discover and connect with mentors who can help you achieve your goals.
           </p>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input type="search" placeholder="Search mentors by name, skills, or industry..." className="pl-8" />
-          </div>
-          <Button asChild>
-            <Link href="/dashboard/mentors/filters">Advanced Filters</Link>
-          </Button>
         </div>
 
         <Tabs defaultValue="recommended">
