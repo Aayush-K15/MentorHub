@@ -77,87 +77,75 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* AI Mentor Companion Section */}
-        <section className="py-20 bg-muted/10">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Bot className="h-10 w-10 text-primary" />
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl">
-                    Your <span className="gradient-text">AI Mentor Companion</span>
-                  </h2>
-                </div>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                  Experience round-the-clock mentorship that adapts to your unique learning journey. Our AI Mentor Companion bridges the gap between scheduled sessions, providing instant, personalized guidance tailored to your specific goals and learning style.
-                </p>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <Zap className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Instant Guidance</h3>
-                      <p className="text-muted-foreground text-sm">
-                        Get immediate answers and insights, 24/7, without waiting for your mentor's availability.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Brain className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Adaptive Learning</h3>
-                      <p className="text-muted-foreground text-sm">
-                        An AI that learns from your mentor's approach, providing consistent and personalized support.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <MessageCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Contextual Conversations</h3>
-                      <p className="text-muted-foreground text-sm">
-                        Engage in meaningful dialogues that understand your context, goals, and learning progress.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <ListChecks className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Progress Tracking</h3>
-                      <p className="text-muted-foreground text-sm">
-                        Continuous monitoring and suggestions to keep you aligned with your mentorship objectives.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/signup">
-                    <Button size="lg" className="w-full sm:w-auto">
-                      Experience AI Mentorship
-                      <Bot className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                  <Link href="#how-it-works">
-                    <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                      Learn More
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center">
-                <div className="absolute -inset-1 rounded-lg from-blue-600 to-purple-600 opacity-15"></div>
-                <Spline
-                  scene="https://prod.spline.design/mux6rgXkC-7N7ecW/scene.splinecode"
-                  className="mb-8"
-                />
-              </div>
-            </div>
+{/* AI Mentor Companion Section */}
+<section className="py-20 bg-muted/10 w-full">
+  <div className="container px-4 md:px-6 max-w-full">
+    <div className="space-y-6">
+      <div className="flex items-center gap-3">
+        <Bot className="h-10 w-10 text-primary" />
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl">
+          Your <span className="gradient-text">AI Mentor Companion</span>
+        </h2>
+      </div>
+      <p className="max-w-[1100px] text-muted-foreground md:text-xl">
+        Experience round-the-clock mentorship that adapts to your unique learning journey. Our AI Mentor Companion bridges the gap between scheduled sessions, providing instant, personalized guidance tailored to your specific goals and learning style.
+      </p>
+      
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="flex items-start gap-3">
+          <Zap className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-lg">Instant Guidance</h3>
+            <p className="text-muted-foreground text-sm">
+              Get immediate answers and insights, 24/7, without waiting for your mentor's availability.
+            </p>
           </div>
-        </section>
+        </div>
+        <div className="flex items-start gap-3">
+          <Brain className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-lg">Adaptive Learning</h3>
+            <p className="text-muted-foreground text-sm">
+              An AI that learns from your mentor's approach, providing consistent and personalized support.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <MessageCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-lg">Contextual Conversations</h3>
+            <p className="text-muted-foreground text-sm">
+              Engage in meaningful dialogues that understand your context, goals, and learning progress.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <ListChecks className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-lg">Progress Tracking</h3>
+            <p className="text-muted-foreground text-sm">
+              Continuous monitoring and suggestions to keep you aligned with your mentorship objectives.
+            </p>
+          </div>
+        </div>
+      </div>
 
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Link href="/signup">
+          <Button size="lg" className="w-full sm:w-auto">
+            Experience AI Mentorship
+            <Bot className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
+        <Link href="#how-it-works">
+          <Button variant="outline" size="lg" className="w-full sm:w-auto">
+            Learn More
+          </Button>
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
         {/* Features Section */}
         <section id="features" className="py-20">
           <div className="container px-4 md:px-6">

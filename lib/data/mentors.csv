@@ -1,51 +1,51 @@
 Name,Expertise,Experience,Specialties,Communication_Style,Hourly_Rate,Availability
-Mentor 1,Skills & Expertise,7,"Technical skills, domain knowledge",Encouraging,86.3,Weekends
-Mentor 2,Career Development,2,"Business planning, funding, growth",Encouraging,118.84,Flexible
-Mentor 3,Skills & Expertise,29,"Technical skills, domain knowledge",Empathetic,51.15,Flexible
-Mentor 4,Startup & Entrepreneurship,16,"Business planning, funding, growth",Empathetic,148.8,Weekends
-Mentor 5,Startup & Entrepreneurship,23,"Business planning, funding, growth",Structured,46.57,Weekends
-Mentor 6,Career Development,6,"Business planning, funding, growth",Encouraging,77.06,Weekdays
-Mentor 7,Skills & Expertise,16,"Technical skills, domain knowledge",Encouraging,120.99,Weekends
-Mentor 8,Skills & Expertise,2,"Technical skills, domain knowledge",Direct,100.92,Weekdays
-Mentor 9,Life Coaching,4,"Personal growth, balance, well-being",Direct,138.81,Weekends
-Mentor 10,Career Development,30,"Business planning, funding, growth",Empathetic,64.59,By Appointment
-Mentor 11,Career Development,13,"Business planning, funding, growth",Empathetic,172.02,Weekdays
-Mentor 12,Startup & Entrepreneurship,13,"Business planning, funding, growth",Structured,159.75,Weekends
-Mentor 13,Startup & Entrepreneurship,15,"Business planning, funding, growth",Direct,63.91,By Appointment
-Mentor 14,Life Coaching,24,"Personal growth, balance, well-being",Structured,163.14,By Appointment
-Mentor 15,Career Development,23,"Business planning, funding, growth",Empathetic,179.87,Weekends
-Mentor 16,Career Development,11,"Business planning, funding, growth",Structured,146.53,Flexible
-Mentor 17,Startup & Entrepreneurship,23,"Business planning, funding, growth",Structured,163.89,Weekdays
-Mentor 18,Career Development,16,"Business planning, funding, growth",Encouraging,156.43,Weekdays
-Mentor 19,Skills & Expertise,1,"Technical skills, domain knowledge",Structured,151.09,Weekdays
-Mentor 20,Life Coaching,14,"Personal growth, balance, well-being",Encouraging,183.68,Weekends
-Mentor 21,Career Development,3,"Business planning, funding, growth",Encouraging,41.85,Weekdays
-Mentor 22,Startup & Entrepreneurship,14,"Business planning, funding, growth",Structured,168.57,By Appointment
-Mentor 23,Career Development,24,"Business planning, funding, growth",Encouraging,25.27,Weekdays
-Mentor 24,Skills & Expertise,9,"Technical skills, domain knowledge",Empathetic,112.29,Weekends
-Mentor 25,Skills & Expertise,8,"Technical skills, domain knowledge",Encouraging,71.58,Weekends
-Mentor 26,Startup & Entrepreneurship,14,"Business planning, funding, growth",Direct,51.48,Weekends
-Mentor 27,Startup & Entrepreneurship,10,"Business planning, funding, growth",Direct,129.89,Flexible
-Mentor 28,Skills & Expertise,26,"Technical skills, domain knowledge",Encouraging,186.68,Weekdays
-Mentor 29,Skills & Expertise,7,"Technical skills, domain knowledge",Empathetic,22.23,Flexible
-Mentor 30,Skills & Expertise,1,"Technical skills, domain knowledge",Empathetic,66.7,Weekdays
-Mentor 31,Startup & Entrepreneurship,17,"Business planning, funding, growth",Direct,108.98,Flexible
-Mentor 32,Startup & Entrepreneurship,6,"Business planning, funding, growth",Encouraging,77.41,Flexible
-Mentor 33,Life Coaching,8,"Personal growth, balance, well-being",Structured,147.38,Flexible
-Mentor 34,Career Development,18,"Business planning, funding, growth",Encouraging,182.47,Weekdays
-Mentor 35,Skills & Expertise,7,"Technical skills, domain knowledge",Empathetic,73.65,By Appointment
-Mentor 36,Startup & Entrepreneurship,11,"Business planning, funding, growth",Structured,66.98,By Appointment
-Mentor 37,Skills & Expertise,18,"Technical skills, domain knowledge",Empathetic,33.7,Weekends
-Mentor 38,Career Development,25,"Business planning, funding, growth",Direct,166.17,Weekends
-Mentor 39,Skills & Expertise,8,"Technical skills, domain knowledge",Structured,84.82,By Appointment
-Mentor 40,Career Development,29,"Business planning, funding, growth",Direct,156.47,Weekdays
-Mentor 41,Startup & Entrepreneurship,30,"Business planning, funding, growth",Structured,82.58,Flexible
-Mentor 42,Career Development,3,"Business planning, funding, growth",Structured,34.97,By Appointment
-Mentor 43,Startup & Entrepreneurship,27,"Business planning, funding, growth",Empathetic,70.09,By Appointment
-Mentor 44,Career Development,26,"Business planning, funding, growth",Encouraging,41.17,Flexible
-Mentor 45,Life Coaching,22,"Personal growth, balance, well-being",Empathetic,123.82,By Appointment
-Mentor 46,Career Development,23,"Business planning, funding, growth",Direct,75.27,Flexible
-Mentor 47,Startup & Entrepreneurship,6,"Business planning, funding, growth",Direct,154.52,Weekdays
-Mentor 48,Career Development,16,"Business planning, funding, growth",Encouraging,106.47,Weekends
-Mentor 49,Startup & Entrepreneurship,9,"Business planning, funding, growth",Empathetic,124.82,Weekends
-Mentor 50,Startup & Entrepreneurship,22,"Business planning, funding, growth",Structured,99.51,Weekends
+Scott King,Skills & Expertise,7,"Technical skills, domain knowledge",Encouraging,86.3,Weekends
+Karen Taylor,Career Development,2,"Business planning, funding, growth",Encouraging,118.84,Flexible
+David Watts,Skills & Expertise,29,"Technical skills, domain knowledge",Empathetic,51.15,Flexible
+Kayla Olson,Startup & Entrepreneurship,16,"Business planning, funding, growth",Empathetic,148.8,Weekends
+William Smith,Startup & Entrepreneurship,23,"Business planning, funding, growth",Structured,46.57,Weekends
+Sarah Lee,Career Development,6,"Business planning, funding, growth",Encouraging,77.06,Weekdays
+Dr. John Small,Skills & Expertise,16,"Technical skills, domain knowledge",Encouraging,120.99,Weekends
+Luke Shea,Skills & Expertise,2,"Technical skills, domain knowledge",Direct,100.92,Weekdays
+Allen Schmidt,Life Coaching,4,"Personal growth, balance, well-being",Direct,138.81,Weekends
+Martin Bailey,Career Development,30,"Business planning, funding, growth",Empathetic,64.59,By Appointment
+Angela Barrett,Career Development,13,"Business planning, funding, growth",Empathetic,172.02,Weekdays
+Alec Turner,Startup & Entrepreneurship,13,"Business planning, funding, growth",Structured,159.75,Weekends
+Jonathan Brown,Startup & Entrepreneurship,15,"Business planning, funding, growth",Direct,63.91,By Appointment
+Sandra Price,Life Coaching,24,"Personal growth, balance, well-being",Structured,163.14,By Appointment
+Joseph Garrison,Career Development,23,"Business planning, funding, growth",Empathetic,179.87,Weekends
+Gregg Reed MD,Career Development,11,"Business planning, funding, growth",Structured,146.53,Flexible
+Lauren Hernandez,Startup & Entrepreneurship,23,"Business planning, funding, growth",Structured,163.89,Weekdays
+Colleen Martin,Career Development,16,"Business planning, funding, growth",Encouraging,156.43,Weekdays
+Ana Banks,Skills & Expertise,1,"Technical skills, domain knowledge",Structured,151.09,Weekdays
+Tyler King,Life Coaching,14,"Personal growth, balance, well-being",Encouraging,183.68,Weekends
+John Horton,Career Development,3,"Business planning, funding, growth",Encouraging,41.85,Weekdays
+Erik Barnett,Startup & Entrepreneurship,14,"Business planning, funding, growth",Structured,168.57,By Appointment
+Jennifer Tran,Career Development,24,"Business planning, funding, growth",Encouraging,25.27,Weekdays
+Daniel Cooke,Skills & Expertise,9,"Technical skills, domain knowledge",Empathetic,112.29,Weekends
+Sydney Bender,Skills & Expertise,8,"Technical skills, domain knowledge",Encouraging,71.58,Weekends
+Renee Yates,Startup & Entrepreneurship,14,"Business planning, funding, growth",Direct,51.48,Weekends
+Mr. Michael Newton,Startup & Entrepreneurship,10,"Business planning, funding, growth",Direct,129.89,Flexible
+Jessica Moss,Skills & Expertise,26,"Technical skills, domain knowledge",Encouraging,186.68,Weekdays
+Martin Bennett,Skills & Expertise,7,"Technical skills, domain knowledge",Empathetic,22.23,Flexible
+Tara Tucker,Skills & Expertise,1,"Technical skills, domain knowledge",Empathetic,66.7,Weekdays
+Joshua Austin,Startup & Entrepreneurship,17,"Business planning, funding, growth",Direct,108.98,Flexible
+Brian Jones,Startup & Entrepreneurship,6,"Business planning, funding, growth",Encouraging,77.41,Flexible
+Michael Delgado,Life Coaching,8,"Personal growth, balance, well-being",Structured,147.38,Flexible
+Justin Brown,Career Development,18,"Business planning, funding, growth",Encouraging,182.47,Weekdays
+Lisa Johnson,Skills & Expertise,7,"Technical skills, domain knowledge",Empathetic,73.65,By Appointment
+Javier Ross,Startup & Entrepreneurship,11,"Business planning, funding, growth",Structured,66.98,By Appointment
+Laura Goodwin,Skills & Expertise,18,"Technical skills, domain knowledge",Empathetic,33.7,Weekends
+Paul Conway,Career Development,25,"Business planning, funding, growth",Direct,166.17,Weekends
+Jason Daniels,Skills & Expertise,8,"Technical skills, domain knowledge",Structured,84.82,By Appointment
+Denise Chapman,Career Development,29,"Business planning, funding, growth",Direct,156.47,Weekdays
+Clinton Serrano,Startup & Entrepreneurship,30,"Business planning, funding, growth",Structured,82.58,Flexible
+Christopher Holt,Career Development,3,"Business planning, funding, growth",Structured,34.97,By Appointment
+Richard Peterson,Startup & Entrepreneurship,27,"Business planning, funding, growth",Empathetic,70.09,By Appointment
+Stephanie Young,Career Development,26,"Business planning, funding, growth",Encouraging,41.17,Flexible
+Jacob Sawyer,Life Coaching,22,"Personal growth, balance, well-being",Empathetic,123.82,By Appointment
+Angela Garcia,Career Development,23,"Business planning, funding, growth",Direct,75.27,Flexible
+Elizabeth Doyle,Startup & Entrepreneurship,6,"Business planning, funding, growth",Direct,154.52,Weekdays
+Jonathan Anderson,Career Development,16,"Business planning, funding, growth",Encouraging,106.47,Weekends
+Joseph Walker,Startup & Entrepreneurship,9,"Business planning, funding, growth",Empathetic,124.82,Weekends
+Patricia King,Startup & Entrepreneurship,22,"Business planning, funding, growth",Structured,99.51,Weekends
