@@ -3,6 +3,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Brain, Calendar, LineChart, MessageSquare, Target, Users, Video } from "lucide-react"
+import Spline from '@splinetool/react-spline/next';
+
 
 export default function Home() {
   return (
@@ -10,8 +12,12 @@ export default function Home() {
       <header className="border-b">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
-            <Users className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">MentorHub</span>
+            <Link href="/">
+              <Users className="h-6 w-6 text-primary" />
+            </Link>
+            <Link href="/">
+              <span className="text-xl font-bold">MentorHub</span>
+            </Link>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#features" className="text-sm font-medium hover:text-primary">
@@ -62,14 +68,11 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="relative">
-                <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 opacity-30 blur"></div>
-                <img
-                  src="/placeholder.svg?height=500&width=500"
-                  alt="Mentorship Platform"
-                  className="relative mx-auto aspect-video overflow-hidden rounded-xl object-cover w-full"
-                  width={500}
-                  height={500}
+              <div className="relative flex justify-center items-center">
+                <div className="absolute -inset-1 rounded-lg from-blue-600 to-purple-600 opacity-15 "></div>
+                <Spline
+                  scene="https://prod.spline.design/mux6rgXkC-7N7ecW/scene.splinecode"
+                  className="mb-8" // Added margin-bottom
                 />
               </div>
             </div>
