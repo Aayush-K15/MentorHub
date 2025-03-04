@@ -43,7 +43,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 hero-gradient">
+        <section className="py-10 hero-gradient">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
@@ -72,7 +72,7 @@ export default function Home() {
                 <div className="absolute -inset-1 rounded-lg from-blue-600 to-purple-600 opacity-15 "></div>
                 <Spline
                   scene="https://prod.spline.design/mux6rgXkC-7N7ecW/scene.splinecode"
-                  className="mb-8" // Added margin-bottom
+                  className="mb-8 " 
                 />
               </div>
             </div>
@@ -90,42 +90,42 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <FeatureCard
-                icon={<Users className="h-10 w-10 text-primary" />}
+                icon={<Users className="h-10 w-10 text-primary " />}
                 title="Smart Matching"
                 description="Find the perfect mentor based on your goals, interests, and learning style."
               />
               <FeatureCard
-                icon={<Target className="h-10 w-10 text-primary" />}
+                icon={<Target className="h-10 w-10 text-primary " />}
                 title="Goal Tracking"
                 description="Set clear goals and track your progress with visual milestones."
               />
               <FeatureCard
-                icon={<Brain className="h-10 w-10 text-primary" />}
+                icon={<Brain className="h-10 w-10 text-primary " />}
                 title="Smart Insights"
                 description="Get personalized recommendations and insights to enhance your learning."
               />
               <FeatureCard
-                icon={<Video className="h-10 w-10 text-primary" />}
+                icon={<Video className="h-10 w-10 text-primary " />}
                 title="Live Sessions"
                 description="Connect with your mentor through integrated video calls with session summaries."
               />
               <FeatureCard
-                icon={<MessageSquare className="h-10 w-10 text-primary" />}
+                icon={<MessageSquare className="h-10 w-10 text-primary " />}
                 title="Community Hub"
                 description="Join topic-based discussion groups and connect with peers."
               />
               <FeatureCard
-                icon={<Calendar className="h-10 w-10 text-primary" />}
+                icon={<Calendar className="h-10 w-10 text-primary " />}
                 title="Structured Journey"
                 description="Follow a clear roadmap with scheduled check-ins and milestones."
               />
               <FeatureCard
-                icon={<LineChart className="h-10 w-10 text-primary" />}
+                icon={<LineChart className="h-10 w-10 text-primary " />}
                 title="Progress Analytics"
                 description="Visualize your growth with detailed progress analytics."
               />
               <FeatureCard
-                icon={<Users className="h-10 w-10 text-primary" />}
+                icon={<Users className="h-10 w-10 text-primary " />}
                 title="Peer Circles"
                 description="Learn alongside others with similar goals in peer mentorship circles."
               />

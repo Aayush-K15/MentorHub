@@ -103,14 +103,14 @@ function DashboardSidebarContent() {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/dashboard/community"}>
                   <Link href="/dashboard/community">
                     <MessageSquare className="h-4 w-4" />
                     <span>Community</span>
                   </Link>
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
