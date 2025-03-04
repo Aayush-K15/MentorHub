@@ -10,22 +10,22 @@ import Link from "next/link"
 export default function SessionsPage() {
   return (
     <DashboardSidebar>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
+      <div className="space-y-6 w-full">
+        <div className="flex items-center justify-between w-full">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Sessions</h1>
             <p className="text-muted-foreground">Manage your mentorship sessions and recordings</p>
           </div>
-          <Button asChild>
+          <Button asChild className="w-full max-w-[200px]">
             <Link href="/dashboard/sessions/schedule">
               <Plus className="mr-2 h-4 w-4" /> Schedule Session
             </Link>
           </Button>
         </div>
 
-        <Card className="bg-primary text-primary-foreground">
-          <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <Card className="bg-primary text-primary-foreground w-full">
+          <CardContent className="p-6 w-full">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 w-full">
               <div className="space-y-2">
                 <Badge className="bg-white text-primary">Upcoming</Badge>
                 <h2 className="text-xl font-bold">Weekly Check-in with Sarah Johnson</h2>
@@ -34,11 +34,11 @@ export default function SessionsPage() {
                   <span>Tomorrow, 10:00 AM - 11:00 AM</span>
                 </div>
               </div>
-              <div className="flex gap-3">
-                <Button variant="secondary" asChild>
+              <div className="flex gap-3 w-full max-w-[400px]">
+                <Button variant="secondary" asChild className="w-full">
                   <Link href="/dashboard/sessions/prepare?id=123">Prepare</Link>
                 </Button>
-                <Button variant="secondary" asChild>
+                <Button variant="secondary" asChild className="w-full">
                   <Link href="/dashboard/sessions/join?id=123">Join Session</Link>
                 </Button>
               </div>
@@ -46,14 +46,14 @@ export default function SessionsPage() {
           </CardContent>
         </Card>
 
-        <Tabs defaultValue="upcoming">
-          <TabsList>
-            <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-            <TabsTrigger value="past">Past Sessions</TabsTrigger>
-            <TabsTrigger value="recordings">Recordings</TabsTrigger>
+        <Tabs defaultValue="upcoming" className="w-full">
+          <TabsList className="w-full">
+            <TabsTrigger value="upcoming" className="w-full">Upcoming</TabsTrigger>
+            <TabsTrigger value="past" className="w-full">Past Sessions</TabsTrigger>
+            <TabsTrigger value="recordings" className="w-full">Recordings</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="upcoming" className="space-y-6 mt-6">
+          <TabsContent value="upcoming" className="space-y-6 mt-6 w-full">
             <SessionCard
               title="Weekly Check-in"
               mentor="Sarah Johnson"
@@ -97,7 +97,7 @@ export default function SessionsPage() {
             />
           </TabsContent>
 
-          <TabsContent value="past" className="space-y-6 mt-6">
+          <TabsContent value="past" className="space-y-6 mt-6 w-full">
             <SessionCard
               title="Introduction & Goal Setting"
               mentor="Sarah Johnson"
@@ -143,13 +143,13 @@ export default function SessionsPage() {
             />
           </TabsContent>
 
-          <TabsContent value="recordings" className="mt-6">
-            <Card>
-              <CardHeader>
+          <TabsContent value="recordings" className="mt-6 w-full">
+            <Card className="w-full">
+              <CardHeader className="w-full">
                 <CardTitle>Session Recordings</CardTitle>
                 <CardDescription>Access recordings of your past mentorship sessions</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 w-full">
                 <RecordingItem
                   title="Introduction & Goal Setting"
                   mentor="Sarah Johnson"
@@ -185,7 +185,7 @@ export default function SessionsPage() {
                   duration="50 minutes"
                 />
               </CardContent>
-              <CardFooter>
+              <CardFooter className="w-full">
                 <Button variant="outline" className="w-full">
                   View All Recordings
                 </Button>
@@ -220,9 +220,9 @@ function SessionCard({
   hasSummary?: boolean
 }) {
   return (
-    <Card>
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between">
+    <Card className="w-full">
+      <CardHeader className="pb-3 w-full">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
             <CardTitle>{title}</CardTitle>
             <Badge
@@ -234,15 +234,15 @@ function SessionCard({
             </Badge>
           </div>
           {status === "upcoming" && (
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild className="w-full max-w-[120px]">
               <Link href={`/dashboard/sessions/reschedule?id=${encodeURIComponent(title)}`}>Reschedule</Link>
             </Button>
           )}
         </div>
         <CardDescription>Session with {mentor}</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <CardContent className="space-y-4 w-full">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full">
           <div className="flex items-center">
             <Avatar className="h-10 w-10 mr-3">
               <AvatarImage src={mentorImage} alt={mentor} />
@@ -266,11 +266,11 @@ function SessionCard({
           </div>
         </div>
 
-        <div>
+        <div className="w-full">
           <h4 className="text-sm font-medium mb-2">Session Agenda</h4>
-          <ul className="space-y-1">
+          <ul className="space-y-1 w-full">
             {agenda.map((item, index) => (
-              <li key={index} className="text-sm flex items-start">
+              <li key={index} className="text-sm flex items-start w-full">
                 <span className="mr-2">•</span>
                 <span>{item}</span>
               </li>
@@ -278,17 +278,17 @@ function SessionCard({
           </ul>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between border-t pt-6">
-        <div className="flex gap-2">
+      <CardFooter className="flex justify-between border-t pt-6 w-full">
+        <div className="flex gap-2 w-full">
           {status === "completed" && hasRecording && (
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild className="w-full">
               <Link href={`/dashboard/sessions/recording?id=${encodeURIComponent(title)}`}>
                 <Play className="mr-1 h-4 w-4" /> Watch Recording
               </Link>
             </Button>
           )}
           {status === "completed" && hasSummary && (
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild className="w-full">
               <Link href={`/dashboard/sessions/summary?id=${encodeURIComponent(title)}`}>
                 <MessageSquare className="mr-1 h-4 w-4" /> View Summary
               </Link>
@@ -296,7 +296,7 @@ function SessionCard({
           )}
         </div>
         {status === "upcoming" && (
-          <Button asChild>
+          <Button asChild className="w-full max-w-[150px]">
             <Link href={`/dashboard/sessions/join?id=${encodeURIComponent(title)}`}>
               <Video className="mr-2 h-4 w-4" /> Join Session
             </Link>
@@ -319,7 +319,7 @@ function RecordingItem({
   duration: string
 }) {
   return (
-    <div className="flex items-center justify-between p-3 border rounded-lg">
+    <div className="flex items-center justify-between p-3 border rounded-lg w-full">
       <div className="flex items-center">
         <div className="rounded-full bg-primary/10 p-2 mr-3">
           <Video className="h-4 w-4 text-primary" />
@@ -349,4 +349,3 @@ function RecordingItem({
     </div>
   )
 }
-
