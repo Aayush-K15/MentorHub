@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { ArrowLeft, ArrowRight, Check, Users } from "lucide-react"
+import { ArrowLeft, ArrowRight, Check, Users, ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function OnboardingPage() {
   const router = useRouter()
@@ -22,7 +22,7 @@ export default function OnboardingPage() {
     if (step < totalSteps) {
       setStep(step + 1)
     } else {
-      router.push("/dashboard")
+      router.push("/dashboard/mentors")
     }
   }
 
@@ -267,21 +267,12 @@ export default function OnboardingPage() {
           </CardContent>
           <CardFooter className="flex justify-between">
             <Button variant="outline" onClick={handleBack} disabled={step === 1}>
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <ChevronLeft className="mr-2 h-4 w-4" />
               Back
             </Button>
             <Button onClick={handleNext}>
-              {step < totalSteps ? (
-                <>
-                  Continue
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </>
-              ) : (
-                <>
-                  Complete Setup
-                  <Check className="ml-2 h-4 w-4" />
-                </>
-              )}
+              {step === totalSteps ? "Find Mentor" : "Continue"}
+              <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
         </Card>

@@ -55,7 +55,7 @@ export default function Home() {
                   platform.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/signup">
+                  <Link href="signup">
                     <Button size="lg" className="w-full sm:w-auto">
                       Find Your Mentor Now
                       <ArrowRight className="ml-2 h-4 w-4" />

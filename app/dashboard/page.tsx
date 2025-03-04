@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { ChevronRight, Clock, MessageSquare, Target, Users, Video } from "lucide-react"
+import { ChevronRight, Clock, MessageSquare, Target, Users, Video, Flame } from "lucide-react"
 import Link from "next/link"
 
 export default function DashboardPage() {
@@ -15,6 +15,26 @@ export default function DashboardPage() {
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
           <p className="text-muted-foreground">Welcome back, John! Here's your mentorship overview.</p>
         </div>
+
+        {/* Streak Counter Card */}
+        <Card className="bg-primary/5">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <Flame className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold">7 Day Streak!</h2>
+                  <p className="text-muted-foreground">Keep up the great work!</p>
+                </div>
+              </div>
+              <div className="hidden sm:block">
+                <Button variant="outline" size="sm">View Details</Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Mentorship Journey */}
         <Card>
@@ -98,6 +118,18 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="mr-4 rounded-full bg-primary/10 p-2">
+                      <Flame className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium">Streak</div>
+                      <div className="text-xs text-muted-foreground">Days active</div>
+                    </div>
+                  </div>
+                  <div className="text-2xl font-bold">7</div>
+                </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="mr-4 rounded-full bg-primary/10 p-2">
