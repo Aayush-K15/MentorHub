@@ -18,7 +18,7 @@ export default function DashboardPage() {
 
         {/* AI Chat Button */}
         <Button className="w-full shadow-lg" asChild>
-          <Link href="/dashboard/ai-chat" className="flex items-center justify-center gap-2">
+          <Link href="/dashboard/shadow-ai" className="flex items-center justify-center gap-2">
             <Bot className="h-5 w-5" />
             <span>Chat with Shadow AI</span>
           </Link>
