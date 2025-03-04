@@ -4,7 +4,7 @@ import type React from "react"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Bell, Calendar, Home, LogOut, MessageSquare, Settings, Target, Users, Video } from "lucide-react"
+import { Bell, Calendar, Home, LogOut, MessageSquare, Settings, Target, Users, Video, Bot } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sidebar,
@@ -93,9 +93,9 @@ function DashboardSidebarContent() {
                   <Link href="/dashboard/sessions">
                     <Video className="h-4 w-4" />
                     <span>Sessions</span>
+                    <Badge className="bg-primary text-primary-foreground ml-2">2</Badge>
                   </Link>
                 </SidebarMenuButton>
-                <Badge className="bg-primary text-primary-foreground">2</Badge>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/dashboard/calendar"}>
@@ -105,14 +105,15 @@ function DashboardSidebarContent() {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              {/* <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/dashboard/community"}>
-                  <Link href="/dashboard/community">
-                    <MessageSquare className="h-4 w-4" />
-                    <span>Community</span>
+              {/* New Shadow AI Chat Button */}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/dashboard/shadow-ai"}>
+                  <Link href="/dashboard/shadow-ai">
+                    <Bot className="h-4 w-4" />
+                    <span>Shadow AI Mentor</span>
                   </Link>
                 </SidebarMenuButton>
-              </SidebarMenuItem> */}
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -140,4 +141,3 @@ function DashboardSidebarContent() {
     </Sidebar>
   )
 }
-
