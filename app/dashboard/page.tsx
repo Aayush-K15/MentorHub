@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { ChevronRight, Clock, MessageSquare, Target, Users, Video, Flame } from "lucide-react"
+import { ChevronRight, Clock, MessageSquare, Target, Users, Video, Flame, Bot } from "lucide-react"
 import Link from "next/link"
 
 export default function DashboardPage() {
@@ -15,6 +15,14 @@ export default function DashboardPage() {
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
           <p className="text-muted-foreground">Welcome back, John! Here's your mentorship overview.</p>
         </div>
+
+        {/* AI Chat Button */}
+        <Button className="w-full shadow-lg" asChild>
+          <Link href="/dashboard/ai-chat" className="flex items-center justify-center gap-2">
+            <Bot className="h-5 w-5" />
+            <span>Chat with Shadow AI</span>
+          </Link>
+        </Button>
 
         {/* Streak Counter Card */}
         <Card className="bg-primary/5">
