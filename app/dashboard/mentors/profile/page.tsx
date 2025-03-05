@@ -63,11 +63,11 @@ export default function MentorProfilePage() {
                   <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
                   <span className="text-sm">Typically responds within 24 hours</span>
                 </div>
-                <div className="pt-2">
+                {/* <div className="pt-2">
                   <Button className="w-full" asChild>
                     <Link href="/dashboard/mentors/request?name=Sarah%20Johnson">Request Mentorship</Link>
                   </Button>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
           </div>

@@ -25,11 +25,13 @@ export default function JoinSessionPage() {
     { id: 2, text: "Complete weather app API integration", completed: false },
     { id: 3, text: "Schedule next session", completed: false },
   ])
+  const [privacyEnabled, setPrivacyEnabled] = useState(false)
 
   const toggleMic = () => setMicEnabled(!micEnabled)
   const toggleVideo = () => setVideoEnabled(!videoEnabled)
   const startSession = () => setInSession(true)
   const endSession = () => setInSession(false)
+  const togglePrivacy = () => setPrivacyEnabled(!privacyEnabled)
 
   const toggleActionItem = (id: number) => {
     setActionItems(actionItems.map((item) => (item.id === id ? { ...item, completed: !item.completed } : item)))
@@ -126,6 +128,15 @@ export default function JoinSessionPage() {
                 <Button variant="destructive" onClick={endSession}>
                   End Session
                 </Button>
+                <div className="flex items-center">
+                  <span className="mr-2 text-sm">Privacy Toggle</span>
+                  <input
+                    type="checkbox"
+                    className="toggle-checkbox"
+                    checked={privacyEnabled}
+                    onChange={togglePrivacy}
+                  />
+                </div>
               </div>
             </div>
 
