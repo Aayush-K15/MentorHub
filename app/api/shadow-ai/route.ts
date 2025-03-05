@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
       2. Practical advice
       3. Emotional support, if needed
       4. A friendly and engaging tone
+      dont use * in your answer for bold text
     `;
 
     const result = await model.generateContent(prompt);

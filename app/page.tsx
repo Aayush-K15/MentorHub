@@ -42,7 +42,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-10 hero-gradient">
+        <section className="py-2 hero-gradient">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
@@ -66,23 +66,23 @@ export default function Home() {
                     </Button>
                   </Link>
                 </div>
-              </div>
-              <div className="relative flex justify-center items-center">
-                <div className="absolute -inset-1 rounded-lg from-blue-600 to-purple-600 opacity-15 "></div>
+                </div>
+                <div className="relative flex justify-center items-center z-50 w-full h-[500px]">
+                <div className="absolute rounded-lg from-blue-600 to-purple-600 opacity-15 w-full h-full"></div>
                 <Spline
                   scene="https://prod.spline.design/mux6rgXkC-7N7ecW/scene.splinecode"
-                  className="mb-8 " 
+                  className="w-full h-full"
                 />
-              </div>
+                </div>
             </div>
           </div>
         </section>
 {/* AI Mentor Companion Section */}
 <section className="py-20 bg-muted/10 w-full">
-  <div className="container px-4 md:px-6 max-w-full">
+  <div className="container px-4 md:px-6">
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <Bot className="h-10 w-10 text-primary" />
+        <Bot className="h-6 w-6 text-primary" />
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl">
           Your <span className="gradient-text">AI Mentor Companion</span>
         </h2>
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex gap-4">
         <Link href="/signup">
           <Button size="lg" className="w-full sm:w-auto">
             Experience AI Mentorship

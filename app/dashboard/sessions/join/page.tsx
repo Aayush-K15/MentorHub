@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import { Button } from "@/components/ui/button"
@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
-import { Calendar, Clock, Mic, MicOff, Video, VideoOff } from "lucide-react"
+import { Calendar, Clock, Mic, MicOff, Video, VideoOff, AlertCircle } from "lucide-react"
 import Link from "next/link"
 
 export default function JoinSessionPage() {
@@ -17,8 +17,9 @@ export default function JoinSessionPage() {
   const sessionId = searchParams.get("id") || "Weekly Check-in"
 
   const [micEnabled, setMicEnabled] = useState(true)
-  const [videoEnabled, setVideoEnabled] = useState(true)
+  const [videoEnabled, setVideoEnabled] = useState(false)
   const [inSession, setInSession] = useState(false)
+  const [cameraPermissionState, setCameraPermissionState] = useState<'initial' | 'requesting' | 'granted' | 'denied'>('initial')
   const [notes, setNotes] = useState("")
   const [actionItems, setActionItems] = useState([
     { id: 1, text: "Review React hooks documentation", completed: false },
@@ -26,10 +27,98 @@ export default function JoinSessionPage() {
     { id: 3, text: "Schedule next session", completed: false },
   ])
 
+  // Refs for video elements
+  const localVideoRef = useRef<HTMLVideoElement>(null)
+
+  // Camera access function with improved permission handling
+  const requestCameraPermission = async () => {
+    // Ensure we're in a browser environment
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert("Your browser does not support camera access");
+      setCameraPermissionState('denied');
+      return;
+    }
+
+    try {
+      // Set state to show we're requesting
+      setCameraPermissionState('requesting');
+
+      // Request camera access
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { 
+          width: { ideal: 1280 },
+          height: { ideal: 720 }
+        },
+        audio: false
+      });
+
+      // Successfully got stream
+      if (localVideoRef.current) {
+        localVideoRef.current.srcObject = stream;
+        localVideoRef.current.onloadedmetadata = () => {
+          localVideoRef.current?.play().catch(e => {
+            console.error('Error playing video:', e);
+          });
+        };
+      }
+
+      // Update states
+      setVideoEnabled(true);
+      setCameraPermissionState('granted');
+    } catch (err) {
+      console.error('Camera access error:', err);
+      
+      // Detailed error handling
+      if (err instanceof DOMException) {
+        switch (err.name) {
+          case 'NotAllowedError':
+            setCameraPermissionState('denied');
+            break;
+          case 'NotFoundError':
+            alert('No camera found on this device.');
+            setCameraPermissionState('denied');
+            break;
+          default:
+            setCameraPermissionState('denied');
+        }
+      }
+      
+      setVideoEnabled(false);
+    }
+  };
+
+  // Stop camera stream
+  const stopCamera = () => {
+    if (localVideoRef.current && localVideoRef.current.srcObject) {
+      const stream = localVideoRef.current.srcObject as MediaStream;
+      const tracks = stream.getTracks();
+      
+      tracks.forEach(track => track.stop());
+      localVideoRef.current.srcObject = null;
+      setVideoEnabled(false);
+      setCameraPermissionState('initial');
+    }
+  };
+
   const toggleMic = () => setMicEnabled(!micEnabled)
-  const toggleVideo = () => setVideoEnabled(!videoEnabled)
-  const startSession = () => setInSession(true)
-  const endSession = () => setInSession(false)
+  
+  const toggleVideo = () => {
+    if (videoEnabled) {
+      stopCamera();
+    } else {
+      requestCameraPermission();
+    }
+  }
+
+  const startSession = () => {
+    requestCameraPermission(); // Automatically start camera when joining session
+    setInSession(true);
+  }
+
+  const endSession = () => {
+    stopCamera(); // Stop camera when ending session
+    setInSession(false);
+  }
 
   const toggleActionItem = (id: number) => {
     setActionItems(actionItems.map((item) => (item.id === id ? { ...item, completed: !item.completed } : item)))
@@ -40,6 +129,42 @@ export default function JoinSessionPage() {
       setActionItems([...actionItems, { id: Date.now(), text, completed: false }])
     }
   }
+
+  // Clean up camera on component unmount
+  useEffect(() => {
+    return () => {
+      stopCamera();
+    };
+  }, []);
+
+  // Render method for camera permission prompt
+  const renderCameraPermissionPrompt = () => {
+    switch (cameraPermissionState) {
+      case 'initial':
+        return (
+          <div className="flex items-center text-yellow-600 space-x-2">
+            <AlertCircle className="h-5 w-5" />
+            <span>Camera access not granted. Click to allow camera.</span>
+          </div>
+        );
+      case 'requesting':
+        return (
+          <div className="flex items-center text-blue-600 space-x-2">
+            <AlertCircle className="h-5 w-5" />
+            <span>Requesting camera access...</span>
+          </div>
+        );
+      case 'denied':
+        return (
+          <div className="flex items-center text-red-600 space-x-2">
+            <AlertCircle className="h-5 w-5" />
+            <span>Camera access was denied. Check browser permissions.</span>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <DashboardSidebar>
@@ -55,15 +180,26 @@ export default function JoinSessionPage() {
                 <div className="relative">
                   <div className="w-40 h-40 rounded-full bg-muted flex items-center justify-center overflow-hidden">
                     {videoEnabled ? (
-                      <img
-                        src="/placeholder.svg?height=160&width=160"
-                        alt="Video preview"
+                      <video 
+                        ref={localVideoRef}
                         className="w-full h-full object-cover"
+                        style={{ 
+                          transform: 'scaleX(-1)', 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'cover' 
+                        }}
+                        autoPlay 
+                        playsInline 
+                        muted
                       />
                     ) : (
-                      <Avatar className="h-20 w-20">
-                        <AvatarFallback>JD</AvatarFallback>
-                      </Avatar>
+                      <div className="flex flex-col items-center justify-center">
+                        <Avatar className="h-20 w-20">
+                          <AvatarFallback>JD</AvatarFallback>
+                        </Avatar>
+                        {renderCameraPermissionPrompt()}
+                      </div>
                     )}
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 -mb-4">
@@ -79,7 +215,7 @@ export default function JoinSessionPage() {
                       variant={videoEnabled ? "default" : "destructive"}
                       size="icon"
                       className="rounded-full h-8 w-8"
-                      onClick={toggleVideo}
+                      onClick={requestCameraPermission}
                     >
                       {videoEnabled ? <Video className="h-4 w-4" /> : <VideoOff className="h-4 w-4" />}
                     </Button>
@@ -136,7 +272,7 @@ export default function JoinSessionPage() {
                     <div className="grid grid-cols-2 gap-4 w-full h-full p-4">
                       <div className="relative rounded-lg overflow-hidden bg-black flex items-center justify-center">
                         <img
-                          src="/placeholder.svg?height=300&width=400"
+                          src="/images/mentor.jpg?height=300&width=400"
                           alt="Sarah Johnson"
                           className="w-full h-full object-cover opacity-90"
                         />
@@ -146,10 +282,12 @@ export default function JoinSessionPage() {
                       </div>
                       <div className="relative rounded-lg overflow-hidden bg-black flex items-center justify-center">
                         {videoEnabled ? (
-                          <img
-                            src="/placeholder.svg?height=300&width=400"
-                            alt="You"
+                          <video 
+                            ref={localVideoRef}
                             className="w-full h-full object-cover opacity-90"
+                            autoPlay 
+                            playsInline 
+                            muted
                           />
                         ) : (
                           <div className="flex flex-col items-center justify-center h-full">
