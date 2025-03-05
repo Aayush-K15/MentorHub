@@ -26,6 +26,7 @@ export default function JoinSessionPage() {
     { id: 2, text: "Complete weather app API integration", completed: false },
     { id: 3, text: "Schedule next session", completed: false },
   ])
+  const [privacyEnabled, setPrivacyEnabled] = useState(false)
 
   // Refs for video elements
   const localVideoRef = useRef<HTMLVideoElement>(null)
@@ -55,10 +56,22 @@ export default function JoinSessionPage() {
       // Successfully got stream
       if (localVideoRef.current) {
         localVideoRef.current.srcObject = stream;
+        
+        // Remove any previous transforms
+        localVideoRef.current.style.transform = 'none';
+        
         localVideoRef.current.onloadedmetadata = () => {
+          // Attempt to play and log any errors
           localVideoRef.current?.play().catch(e => {
             console.error('Error playing video:', e);
+            alert(`Video play error: ${e.message}`);
           });
+        };
+
+        // Add error event listener
+        localVideoRef.current.onerror = (e) => {
+          console.error('Video error:', e);
+          alert('Video error occurred');
         };
       }
 
@@ -68,10 +81,14 @@ export default function JoinSessionPage() {
     } catch (err) {
       console.error('Camera access error:', err);
       
-      // Detailed error handling
+      // More detailed error logging
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      alert(`Camera access failed: ${errorMessage}`);
+      
       if (err instanceof DOMException) {
         switch (err.name) {
           case 'NotAllowedError':
+            alert('Camera access was denied. Please check your browser permissions.');
             setCameraPermissionState('denied');
             break;
           case 'NotFoundError':
@@ -101,9 +118,24 @@ export default function JoinSessionPage() {
   };
 
   const toggleMic = () => setMicEnabled(!micEnabled)
-  const toggleVideo = () => setVideoEnabled(!videoEnabled)
-  const startSession = () => setInSession(true)
-  const endSession = () => setInSession(false)
+  
+  const toggleVideo = () => {
+    if (videoEnabled) {
+      stopCamera();
+    } else {
+      requestCameraPermission();
+    }
+  }
+
+  const startSession = () => {
+    requestCameraPermission(); // Automatically start camera when joining session
+    setInSession(true);
+  }
+
+  const endSession = () => {
+    stopCamera(); // Stop camera when ending session
+    setInSession(false);
+  }
 
   const toggleActionItem = (id: number) => {
     setActionItems(actionItems.map((item) => (item.id === id ? { ...item, completed: !item.completed } : item)))
@@ -168,12 +200,6 @@ export default function JoinSessionPage() {
                       <video 
                         ref={localVideoRef}
                         className="w-full h-full object-cover"
-                        style={{ 
-                          transform: 'scaleX(-1)', 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'cover' 
-                        }}
                         autoPlay 
                         playsInline 
                         muted
@@ -247,15 +273,6 @@ export default function JoinSessionPage() {
                 <Button variant="destructive" onClick={endSession}>
                   End Session
                 </Button>
-                <div className="flex items-center">
-                  <span className="mr-2 text-sm">Privacy Toggle</span>
-                  <input
-                    type="checkbox"
-                    className="toggle-checkbox"
-                    checked={privacyEnabled}
-                    onChange={togglePrivacy}
-                  />
-                </div>
               </div>
             </div>
 
