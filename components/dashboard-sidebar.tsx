@@ -136,7 +136,7 @@ function DashboardSidebarContent() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === "/dashboard/settings"}>
-              <Link href="/dashboard/settings">
+              <Link href="#settings">
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
               </Link>

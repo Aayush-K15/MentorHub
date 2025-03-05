@@ -17,7 +17,7 @@ export default function SessionsPage() {
             <p className="text-muted-foreground">Manage your mentorship sessions and recordings</p>
           </div>
           <Button asChild className="w-full max-w-[200px]">
-            <Link href="/dashboard/sessions/schedule">
+            <Link href="#schedule">
               <Plus className="mr-2 h-4 w-4" /> Schedule Session
             </Link>
           </Button>
@@ -36,7 +36,7 @@ export default function SessionsPage() {
               </div>
               <div className="flex gap-3 w-full max-w-[400px]">
                 <Button variant="secondary" asChild className="w-full">
-                  <Link href="/dashboard/sessions/prepare?id=123">Prepare</Link>
+                  <Link href="#prepare?id=123">Prepare</Link>
                 </Button>
                 <Button variant="secondary" asChild className="w-full">
                   <Link href="/dashboard/sessions/join?id=123">Join Session</Link>
