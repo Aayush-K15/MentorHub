@@ -101,24 +101,9 @@ export default function JoinSessionPage() {
   };
 
   const toggleMic = () => setMicEnabled(!micEnabled)
-  
-  const toggleVideo = () => {
-    if (videoEnabled) {
-      stopCamera();
-    } else {
-      requestCameraPermission();
-    }
-  }
-
-  const startSession = () => {
-    requestCameraPermission(); // Automatically start camera when joining session
-    setInSession(true);
-  }
-
-  const endSession = () => {
-    stopCamera(); // Stop camera when ending session
-    setInSession(false);
-  }
+  const toggleVideo = () => setVideoEnabled(!videoEnabled)
+  const startSession = () => setInSession(true)
+  const endSession = () => setInSession(false)
 
   const toggleActionItem = (id: number) => {
     setActionItems(actionItems.map((item) => (item.id === id ? { ...item, completed: !item.completed } : item)))
@@ -262,6 +247,15 @@ export default function JoinSessionPage() {
                 <Button variant="destructive" onClick={endSession}>
                   End Session
                 </Button>
+                <div className="flex items-center">
+                  <span className="mr-2 text-sm">Privacy Toggle</span>
+                  <input
+                    type="checkbox"
+                    className="toggle-checkbox"
+                    checked={privacyEnabled}
+                    onChange={togglePrivacy}
+                  />
+                </div>
               </div>
             </div>
 
