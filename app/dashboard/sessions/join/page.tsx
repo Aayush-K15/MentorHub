@@ -9,8 +9,10 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
-import { Calendar, Clock, Mic, MicOff, Video, VideoOff, AlertCircle } from "lucide-react"
+import { Calendar, Clock, Mic, MicOff, Video, VideoOff, AlertCircle, ShieldCheck } from "lucide-react"
 import Link from "next/link"
+import { Switch } from "@/components/ui/switch"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 export default function JoinSessionPage() {
   const searchParams = useSearchParams()
@@ -27,9 +29,11 @@ export default function JoinSessionPage() {
     { id: 3, text: "Schedule next session", completed: false },
   ])
   const [privacyEnabled, setPrivacyEnabled] = useState(false)
+  const [showPrivacyDialog, setShowPrivacyDialog] = useState(false)
 
   // Refs for video elements
   const localVideoRef = useRef<HTMLVideoElement>(null)
+  const previewVideoRef = useRef<HTMLVideoElement>(null)
 
   // Camera access function with improved permission handling
   const requestCameraPermission = async () => {
@@ -54,22 +58,25 @@ export default function JoinSessionPage() {
       });
 
       // Successfully got stream
-      if (localVideoRef.current) {
-        localVideoRef.current.srcObject = stream;
+      // Use previewVideoRef for preview, localVideoRef for session
+      const videoRef = previewVideoRef.current || localVideoRef.current;
+      
+      if (videoRef) {
+        videoRef.srcObject = stream;
         
         // Remove any previous transforms
-        localVideoRef.current.style.transform = 'none';
+        videoRef.style.transform = 'none';
         
-        localVideoRef.current.onloadedmetadata = () => {
+        videoRef.onloadedmetadata = () => {
           // Attempt to play and log any errors
-          localVideoRef.current?.play().catch(e => {
+          videoRef.play().catch(e => {
             console.error('Error playing video:', e);
             alert(`Video play error: ${e.message}`);
           });
         };
 
         // Add error event listener
-        localVideoRef.current.onerror = (e) => {
+        videoRef.onerror = (e) => {
           console.error('Video error:', e);
           alert('Video error occurred');
         };
@@ -106,15 +113,20 @@ export default function JoinSessionPage() {
 
   // Stop camera stream
   const stopCamera = () => {
-    if (localVideoRef.current && localVideoRef.current.srcObject) {
-      const stream = localVideoRef.current.srcObject as MediaStream;
-      const tracks = stream.getTracks();
-      
-      tracks.forEach(track => track.stop());
-      localVideoRef.current.srcObject = null;
-      setVideoEnabled(false);
-      setCameraPermissionState('initial');
-    }
+    const videoRefs = [localVideoRef.current, previewVideoRef.current].filter(Boolean);
+    
+    videoRefs.forEach(videoRef => {
+      if (videoRef && videoRef.srcObject) {
+        const stream = videoRef.srcObject as MediaStream;
+        const tracks = stream.getTracks();
+        
+        tracks.forEach(track => track.stop());
+        videoRef.srcObject = null;
+      }
+    });
+
+    setVideoEnabled(false);
+    setCameraPermissionState('initial');
   };
 
   const toggleMic = () => setMicEnabled(!micEnabled)
@@ -128,6 +140,12 @@ export default function JoinSessionPage() {
   }
 
   const startSession = () => {
+    if (privacyEnabled) {
+      setShowPrivacyDialog(true);
+      setTimeout(() => {
+        setShowPrivacyDialog(false);
+      }, 3000);
+    }
     requestCameraPermission(); // Automatically start camera when joining session
     setInSession(true);
   }
@@ -185,6 +203,19 @@ export default function JoinSessionPage() {
 
   return (
     <DashboardSidebar>
+      {/* Privacy Dialog */}
+      <Dialog open={showPrivacyDialog} onOpenChange={setShowPrivacyDialog}>
+        <DialogContent className="sm:max-w-[425px] bg-green-50">
+          <DialogHeader className="flex items-center">
+            <ShieldCheck className="h-10 w-10 text-green-600 mb-2" />
+            <DialogTitle className="text-green-800">Privacy Protected</DialogTitle>
+            <DialogDescription className="text-green-700 text-center">
+              Your conversation will not be analyzed by AI. Your privacy is our priority.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
       <div className="space-y-6">
         {!inSession ? (
           <Card className="max-w-md mx-auto mt-20">
@@ -198,7 +229,7 @@ export default function JoinSessionPage() {
                   <div className="w-40 h-40 rounded-full bg-muted flex items-center justify-center overflow-hidden">
                     {videoEnabled ? (
                       <video 
-                        ref={localVideoRef}
+                        ref={previewVideoRef}
                         className="w-full h-full object-cover"
                         autoPlay 
                         playsInline 
@@ -207,7 +238,7 @@ export default function JoinSessionPage() {
                     ) : (
                       <div className="flex flex-col items-center justify-center">
                         <Avatar className="h-20 w-20">
-                          <AvatarFallback>JD</AvatarFallback>
+                          <AvatarFallback>Loading..</AvatarFallback>
                         </Avatar>
                         {renderCameraPermissionPrompt()}
                       </div>
@@ -226,7 +257,7 @@ export default function JoinSessionPage() {
                       variant={videoEnabled ? "default" : "destructive"}
                       size="icon"
                       className="rounded-full h-8 w-8"
-                      onClick={requestCameraPermission}
+                      onClick={toggleVideo}
                     >
                       {videoEnabled ? <Video className="h-4 w-4" /> : <VideoOff className="h-4 w-4" />}
                     </Button>
@@ -263,7 +294,25 @@ export default function JoinSessionPage() {
                   <span className="text-sm text-muted-foreground">00:23:45</span>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
+                {/* Privacy Toggle Added to Meeting View */}
+                <div className="flex items-center space-x-2 mr-4">
+                  <ShieldCheck className="h-5 w-5 text-muted-foreground" />
+                  <label htmlFor="privacy-mode-session" className="text-sm">Privacy Mode</label>
+                  <Switch
+                    id="privacy-mode-session"
+                    checked={privacyEnabled}
+                    onCheckedChange={(checked) => {
+                      setPrivacyEnabled(checked);
+                      if (checked) {
+                        setShowPrivacyDialog(true);
+                        setTimeout(() => {
+                          setShowPrivacyDialog(false);
+                        }, 3000);
+                      }
+                    }}
+                  />
+                </div>
                 <Button variant={micEnabled ? "outline" : "destructive"} size="icon" onClick={toggleMic}>
                   {micEnabled ? <Mic className="h-4 w-4" /> : <MicOff className="h-4 w-4" />}
                 </Button>
